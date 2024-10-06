@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 수정 폼</title>
+</head>
+
+<style>
+    /* 전체 레이아웃 스타일 */
+    body {
+        font-family: pretendard;
+        background-color: #ffffff;
+    }
+
+    .layout {
+        background-color: #f0f0f5;
+        width: 60%;
+        margin: 20px auto; /* 위쪽 마진 추가 */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    }
+
+    input, textarea {
+        font-family: pretendard;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #f0f0f5;
+    }
+
+   input {
+        color: #4d4d4d;
+        font-weight: 600;
+   }
+
+    textarea {
+        font-size: 12px;
+        color: #6c757d;
+        line-height: 1.5;
+        font-weight: 500;
+        min-height: 100px; /* 최소 높이 조정 */
+    }
+
+    button {
+        background-color: #c2c1d7;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 550;
+        margin-top: 15px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+        background-color: #c2c1d7;
+        color: #4d4d4d;
+    }
+
+    /* 반응형 레이아웃: 화면이 작을 때 */
+    @media screen and (max-width: 768px) {
+        .layout {
+            width: 90%;
+        }
+    }
+</style>
+
+<body>
+    <div class="layout">
+        <form th:action="@{/board/update/{id}(id=${board.id})}" method="post">
+            <input name="title" type="text" th:value="${board.title}">
+            <textarea name="content" th:text="${board.content}"></textarea>
+            <button type="submit">수정하기</button>
+        </form>
+    </div>
+</body>
+</html>
